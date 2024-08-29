@@ -37,7 +37,13 @@ def markdown_to_html_node(markdown_doc):
 		else:
 			tag = type_of_block_to_tag(type_of_block)
 
-		content = block.lstrip('#').strip() if type_of_block == "heading" else block
+
+		if type_of_block == "heading":
+			content = block.lstrip('#').strip()
+		elif type_of_block == "quote":
+			content = block[2:]
+		else:
+			content = block
 
 		if tag in ["ol", "ul"]:
 			li_nodes = []
