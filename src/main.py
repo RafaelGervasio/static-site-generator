@@ -1,5 +1,6 @@
 import os
 import shutil
+from gen_page import generate_page, generate_pages_recursive
 
 
 def copy_contents(source, destination):
@@ -7,6 +8,7 @@ def copy_contents(source, destination):
 		print(os.path.abspath(destination))
 		raise Exception("Path doesn't exist.")
 	else:		
+
 		shutil.rmtree(f'{destination}')
 		os.mkdir(f"{destination}")
 
@@ -29,3 +31,5 @@ def copy_contents(source, destination):
 
 
 copy_contents("static", "public")
+generate_pages_recursive("content", "template.html", "public")
+# generate_page("content/index.md", "template.html", "public")

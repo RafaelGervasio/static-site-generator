@@ -1,3 +1,14 @@
+def extract_title(markdown_file):
+	blocks = markdown_to_blocks(markdown_file)
+	header_block = blocks[0]
+
+	stripped_header = header_block.strip()
+	if not (stripped_header[0] == "#" and stripped_header[1] == " "):
+		raise Exception("content provided was not a h1 header")
+	return stripped_header[2:]
+
+
+
 def markdown_to_blocks(markdown):
 	blocks = markdown.split("\n\n")
 	cleaned_blocks = []

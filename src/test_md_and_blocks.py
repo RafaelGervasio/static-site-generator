@@ -1,6 +1,16 @@
 import unittest
 
-from md_and_blocks import markdown_to_blocks, block_to_block_type
+from md_and_blocks import markdown_to_blocks, block_to_block_type, extract_title
+
+
+class TestExtractTitle(unittest.TestCase):
+    def test_normal_h1(self):
+        md_string = "# Hello"
+        self.assertEqual(extract_title(md_string), "Hello")
+
+    def test_white_spaces(self):
+        md_string = "  # Hello   "
+        self.assertEqual(extract_title(md_string), "Hello")
 
 class TestMarkdownToBlocks(unittest.TestCase):
     def test_base_case(self):
